@@ -8,15 +8,12 @@ class FetcherApiCarbonService
   end
 
   def call
-    time = Time.now.to_i
-    # uri = URI("https://api.websitecarbon.com/site?url=#{@url}")
-    ap @url
-    doc = URI.open("https://api.websitecarbon.com/site?url=#{@url}")
-
-    json = JSON.parse(doc)
-
-    ap "call api pour #{@url} terminé"
-    ap "temps d'execution: #{Time.now.to_i - time} secondes"
-    return json
+    begin
+      doc = URI.open("https://api.websitecarbon.com/site?url=#{@url}").read
+      json = JSON.parse(doc)
+      return json
+    rescue OpenURI::HTTPError => e
+      return { error: "This website is not valid" }
+    end
   end
 end
