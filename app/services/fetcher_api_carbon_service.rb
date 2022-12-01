@@ -4,14 +4,19 @@ require 'json'
 
 class FetcherApiCarbonService
   def initialize(url)
-    @url = url
+    @url = CGI.escape(url)
   end
 
   def call
-    uri = URI("https://api.websitecarbon.com/site?url=#{@url}")
+    time = Time.now.to_i
+    # uri = URI("https://api.websitecarbon.com/site?url=#{@url}")
+    ap @url
+    doc = URI.open("https://api.websitecarbon.com/site?url=#{@url}")
 
-    https = Net::HTTP.get(uri)
-    json = JSON.parse(https)
+    json = JSON.parse(doc)
+
+    ap "call api pour #{@url} terminé"
+    ap "temps d'execution: #{Time.now.to_i - time} secondes"
     return json
   end
 end
