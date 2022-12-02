@@ -18,7 +18,17 @@ class Api::V1::VisitsController < Api::V1::BaseController
   end
 
   def index
-    @visits = current_user.visits.where(url: params[:url]).where.not(cleaner_than: nil)
+    @visits = current_user.visits
+    if params[:url].present?
+      @visits = @visits.where(url: params[:url]).where.not(cleaner_than: nil)
+      # test du if pour cleaner_than
+      # if @visits[0].cleaner_than < 0.5
+      #   percentage = ((1 - @visits[0].cleaner_than) * 100).round
+      #   render json: { "This website is dirtier than "}
+      else
+        render :index
+      end
+    end
 
     render json: @visits
   end
