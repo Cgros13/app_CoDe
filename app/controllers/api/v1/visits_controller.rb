@@ -17,6 +17,12 @@ class Api::V1::VisitsController < Api::V1::BaseController
     end
   end
 
+  def index
+    @visits = current_user.visits.where(url: params[:url]).where.not(cleaner_than: nil)
+
+    render json: @visits
+  end
+
   def show
     @visit = Visit.find(params[:id])
   end
