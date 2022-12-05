@@ -6,6 +6,9 @@ class Api::V1::VisitsController < Api::V1::BaseController
     ap visit_params
     response = FetcherApiCarbonService.new(@visit.url).call
     @visit.cleaner_than = response["cleanerThan"] if response["cleanerThan"]
+    @visit.green = response["green"] if response["green"]
+    @visit.bytes = response["bytes"] if response["bytes"]
+    @visit.statistics = response["statistics"] if response["statistics"]
     @visit.user = current_user
 
     if @visit.save

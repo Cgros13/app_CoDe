@@ -1,3 +1,3 @@
 json.array! @visits do |visit|
-  json.extract! visit, :id, :url, :cleaner_than, :created_at
+  json.extract! visit, :id, :url, :cleaner_than, :green, :bytes, :statistics, :created_at
 end
