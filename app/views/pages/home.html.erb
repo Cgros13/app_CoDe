@@ -1,6 +1,55 @@
-<div class="container">
-  <h1>Dashboard </h1>
-  <% if user_signed_in? %>
-    <h2><%= "You are connected" %> with <%= current_user.email %></h2>
-  <% end %>
+<%= render "navbar" %>
+  <div class="hcontainer">
+    <div class="welcome-message">
+      <% if user_signed_in? %>
+        <h3>Hey <strong><%= current_user.email %></strong> !</h3>
+        <h4>You've consumed <strong> 6.08g</strong> of CO2 today</h4>
+        <h4>But don't worry we'll break it down for you ...</h4>
+      <% end %>
+    </div>
+
+    <div class="timeperiod">
+      <div class="period">
+        <h5>Day</h5>
+      </div>
+      <div class="period">
+        <h5>Week</h5>
+      </div>
+      <div class="period">
+        <h5>Month</h5>
+      </div>
+    </div>
+
+    <div class="consumption-info">
+      <div class="carbon-intensity">
+        <h4> Energy Intensity </h4>
+        <p>Your current browsing usage generate the equivalent of 6.08g of carbon dioxide.</p>
+        <br>
+        <p>Want to learn more about websites carbon footprint? </p>
+        <a href="https://www.websitecarbon.com/how-does-it-work/" target="_blanck" class="learn-btn"><strong>Learn More</strong></a>
+      </div>
+
+      <div class="timeperiod-consumption">
+        <div class="time-title">
+          <h4>Today - <%= Time.now.strftime("%A %d of %B, %Y") %> </h4> <br>
+        </div>
+
+        <div class="consumption-breakdown">
+          <div class="column-category">
+            <h5> Website</h5><i class="fa-solid fa-caret-down"></i>
+          </div>
+
+          <div class="column-category">
+            <h5> CO2 emissions</h5><i class="fa-solid fa-caret-down"></i>
+
+          </div>
+          <div class="column-category">
+          <h5>Browsing duration</h5><i class="fa-solid fa-caret-down"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </div>
+<%= render "footer" %>
