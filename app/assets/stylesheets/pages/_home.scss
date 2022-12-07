@@ -4,7 +4,7 @@ html {
   background-color: #EDEDE9;
 
 
-h1, h2, h3, h4, h5{
+h1, h2, h4, h5{
   font-family: 'Assistant', sans-serif;
   margin: 16px 0px;
   color: white;
@@ -13,6 +13,8 @@ h1, h2, h3, h4, h5{
 h3 {
   font-size: 32px;
   margin-bottom: 16px;
+  color: #31572C;
+  font-family: 'Assistant', sans-serif;
 }
 
 h4{
@@ -110,11 +112,50 @@ h5 {
     justify-content: space-between;
     display: inline-flex;
 
-    .fa-solid {
-      height: 15px;
-      width: auto;
-      color: white;
-    }
+    // .fa-solid {
+    //   height: 15px;
+    //   width: auto;
+    //   color: white;
+    // }
   }
 
+}
+
+.button_period > a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 8px;
+
+}
+
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+
+.consumption-imaged {
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  h4 {
+    color: #31572C;
+    font-size: 24px;
+  }
+  #lamp-lit, #train {
+    align-items: flex-start;
+  }
+
+  #tv-watch {
+    align-items: flex-end;
+  }
+}
+
+.fa-regular, .fa-solid {
+  color: #31572C;
 }
