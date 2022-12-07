@@ -1,29 +1,37 @@
 <%= render "navbar" %>
+  <%= console %>
   <div class="hcontainer">
     <div class="welcome-message">
       <% if user_signed_in? %>
-        <h3>Hey <strong><%= current_user.email %></strong> !</h3>
-        <h4>You've consumed <strong> 6.08g</strong> of CO2 today</h4>
+        <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
+        <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
         <h4>But don't worry we'll break it down for you ...</h4>
       <% end %>
-    </div>
 
+      <div id="chart" data-green="<%= green_data(@visits) %>" ></div>
+    </div>
     <div class="timeperiod">
       <div class="period">
-        <h5>Day</h5>
+       <div class="button_period">
+        <%= link_to 'Day', root_path(period: 'day') %>
+       </div>
       </div>
       <div class="period">
-        <h5>Week</h5>
+        <div class="button_period">
+         <%= link_to 'Week', root_path(period: 'week') %>
+        </div>
       </div>
       <div class="period">
-        <h5>Month</h5>
+        <div class="button_period">
+          <%= link_to 'Month', root_path(period: 'month') %>
+        </div>
       </div>
     </div>
 
     <div class="consumption-info">
       <div class="carbon-intensity">
         <h4> Energy Intensity </h4>
-        <p>Your current browsing usage generate the equivalent of 6.08g of carbon dioxide.</p>
+        <p>Today your browsing consumed <%= @visits.map(&:energy).compact.sum.round(2) %> KW g.</p>
         <br>
         <p>Want to learn more about websites carbon footprint? </p>
         <a href="https://www.websitecarbon.com/how-does-it-work/" target="_blanck" class="learn-btn"><strong>Learn More</strong></a>
@@ -48,7 +56,24 @@
           </div>
         </div>
       </div>
+    </div>
 
+    <h3> Your browsing represents: </h3> <br>
+    <div class="consumption-imaged">
+      <div id="lamp-lit">
+        <i class="fa-regular fa-lightbulb fa-4x"></i>
+        <h4>A light lit for 37 minutes</h4>
+      </div>
+
+      <div id="tv-watch">
+        <i class="fa-solid fa-tv fa-4x"></i>
+        <h4>Watching TV for 4.3 hours</h4>
+      </div>
+
+      <div id="train" >
+        <i class="fa-solid fa-train fa-4x"></i></i>
+        <h4>2.1 kilometers traveled by train</h4>
+      </div>
     </div>
   </div>
 </div>
