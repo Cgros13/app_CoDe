@@ -14,8 +14,8 @@ class PagesController < ApplicationController
 
     @data = groups.map(&:last).map do |visits|
       {
-        url: visits.filter { |visit| !visit.end_time.nil? }.map { |visit| visit["url"] }.uniq,
-        co2: visits.map(&:co2_by_time).sum.round(2) / 4
+        url: visits.map { |visit| visit["url"] }.uniq,
+        co2: visits.filter { |visit| !visit.end_time.nil? }.map(&:co2_by_time).sum.round(2) / 4
       }
     end
     @data = @data.first(7).sort_by { |x| x[:co2] }.reverse
