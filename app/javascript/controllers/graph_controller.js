@@ -50,11 +50,11 @@ export default class extends Controller {
           dataLabels: {
             name: {
               offsetY: -10,
-              color: "white",
+              color: "#52796F",
               fontSize: "13px"
             },
             value: {
-              color: "white",
+              color: "#52796F",
               fontSize: "30px",
               show: true
             }

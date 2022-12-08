@@ -25,7 +25,7 @@
 
 
 
-  <h5>Here's your data for the: </h5>
+  <%# <h5>Here's your data for the: </h5> %>
   <div class="timeperiod" data-controller="button">
     <div class="period">
       <div class="button_period">
@@ -40,6 +40,27 @@
     <div class="period">
       <div class="button_period">
         <%= link_to 'Month', request.params.merge(period: 'month'), class: class_names("toggleBtn": params[:period] == "month"), data: { turbo: false }  %>
+      </div>
+    </div>
+  </div>
+
+  <div class="peakhour">
+    <div class="info">
+      <div><h4><%= @visits.map(&:co2).compact.sum.round(2) %> g of Co2</h4> </div>
+      <div><p>Browsing requires energy that has a carbon footprint</p></div>
+    </div>
+    <div class="info">
+      <div>
+        <h4><%= @visits.map(&:energy).compact.sum.round(2) %> KWh</h4>
+      </div>
+      <div><p>A kWh is a way to measure how much energy you're using</p></div>
+    </div>
+    <div class="info">
+      <div>
+        <h4><%= bytes_data(@visits) %> Bytes</h4>
+      </div>
+      <div>
+        <p>Bytes are a unit of digital information that consists of 8 units</p>
       </div>
     </div>
   </div>
@@ -71,29 +92,22 @@
     </div>
   </div>
 
-  <h3 class="conso-review"> Consomation review </h3>
 
-  <div class="peakhour">
-    <div><h4><%= @visits.map(&:co2).compact.sum.round(2) %> g of Co2</h4></div>
-    <div><h4><%= @visits.map(&:energy).compact.sum.round(2) %> KWh</h4></div>
-    <div><h4><%= bytes_data(@visits) %> Bytes</h4></div>
-  </div>
-
-  <h6> Your browsing represents: </h6>
+  <h6> What your consomation equals to </h6>
   <div class="consumption-imaged">
     <div id="laundry">
       <i class="fa-solid fa-socks fa-5x"></i>
-      <h5>A 30 minutes laundry cycle </h5>
+      <h5>A <%= @visits.map(&:laundry).compact.sum.round(0) %> minutes laundry cycle </h5>
     </div>
 
     <div id="e-bike">
       <i class="fa-solid fa-person-biking fa-5x"></i>
-      <h5> 100 km travelling by e-bike</h5>
+      <h5> <%= @visits.map(&:e_bike).compact.sum.round(0) %> km travelling by e-bike</h5>
     </div>
 
     <div id="phone" >
      <i class="fa-solid fa-mobile-screen fa-5x"></i>
-      <h5>50 phone charges</h5>
+      <h5> <%= @visits.map(&:phone_cycles).compact.sum.round(0) %> phone charges</h5>
     </div>
   </div>
 
