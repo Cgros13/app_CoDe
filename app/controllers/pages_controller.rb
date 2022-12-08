@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @visits = current_user.visits
+    @visits = current_user.visits.order(created_at: :asc)
 
     case params[:period]
     when "day"

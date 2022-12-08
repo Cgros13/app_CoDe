@@ -6,6 +6,13 @@
         <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
         <h4>But don't worry we'll break it down for you ...</h4>
       <% end %>
+      <% visits = @visits.where('url LIKE ?', 'https://www.youtube%').where.not(statistics: nil) %>
+
+      <% visits.each do |visit| %>
+        <%= visit.statistics.first[1]["grid"]["grams"] %>
+        <br>
+      <% end %>
+      <%= console %>
 
       <div data-graph-target="chart" data-green="<%= green_data(@visits) %>" ></div>
     </div>
@@ -46,7 +53,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="peakhour">
     <h4>Your carbon consumption peaked between <strong>9:00 a.m</strong> and <strong>12:00 p.m</strong></h4>
     </div>
