@@ -6,6 +6,8 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 # créer un user
+Visit.destroy_all
+
 require 'open-uri'
 require 'net/http'
 require 'json'
