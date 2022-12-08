@@ -65,8 +65,12 @@ export default class extends Controller {
         type: "gradient",
         gradient: {
           shade: "dark",
-          type: "vertical",
-          gradientToColors: ["#d0f4de"],
+          type: "horizontal",
+          shadeIntensity: 0.5,
+          gradientToColors: ["#ABE5A1"],
+          inverseColors: true,
+          opacityFrom: 1,
+          opacityTo: 1,
           stops: [0, 100]
         }
       },
