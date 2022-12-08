@@ -26,7 +26,7 @@ export default class extends Controller {
       },
       plotOptions: {
         bar: {
-          borderRadius: 4,
+          borderRadius: 0,
           horizontal: true,
         }
       },
