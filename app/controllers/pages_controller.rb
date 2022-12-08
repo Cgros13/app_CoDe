@@ -14,7 +14,7 @@ class PagesController < ApplicationController
 
     @data = groups.map(&:last).map do |visits|
       {
-        url: visits.map { |visit| visit["url"] }.uniq,
+        url: visits.filter { |visit| !visit.end_time.nil? }.map { |visit| visit["url"] }.uniq,
         co2: visits.filter { |visit| !visit.end_time.nil? }.map(&:co2_by_time).sum.round(2) / 4
       }
     end
