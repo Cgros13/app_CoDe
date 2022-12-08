@@ -29,4 +29,16 @@ class Visit < ApplicationRecord
   def energy_per_time
     time / energy if time
   end
+
+  def phone_cycles
+    energy * 50
+  end
+
+  def e_bike
+    energy * 100
+  end
+
+  def laundry
+    energy * 2
+  end
 end

@@ -28,6 +28,7 @@ sites_fetched = [
 ]
 
 user = User.create!(email: "allan@example.com", password: "azerty")
+user_1 = User.create!(email: "ines@example.com", password: "azerty")
 
 ## Pour créer des visites pour aujourd'hui et les 30 derniers jours
 31.times do |i|
@@ -45,6 +46,26 @@ user = User.create!(email: "allan@example.com", password: "azerty")
       bytes: site[:statistics]["bytes"],
       statistics: site[:statistics]["statistics"],
       user: user
+    )
+  end
+end
+
+## seeds user 2
+31.times do |i|
+  date = i.day.ago
+
+  sites_fetched.each do |site|
+    duration = rand(600..10800) ## permet de créer des sessions entre 10 minutes to 3 hours
+
+    Visit.create!(
+      created_at: date,
+      end_time: date + duration,
+      url: site[:url],
+      cleaner_than: site[:statistics]["cleanerThan"],
+      green: site[:statistics]["green"],
+      bytes: site[:statistics]["bytes"],
+      statistics: site[:statistics]["statistics"],
+      user: user_1
     )
   end
 end

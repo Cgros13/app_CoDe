@@ -75,11 +75,14 @@ p {
 
 // Selector day, week, month
 .timeperiod {
-  background-color: #CFE1B9;
+  background-color: #52796F;
   border-radius: 36px;
   height: 46px;
   display: inline-flex;
   align-items: center;
+  position: absolute;
+    right: 10%;
+    top: 23%;
 
   h5 {
     text-align: center;
@@ -87,8 +90,6 @@ p {
   }
 
   .period {
-    background-color: #97A97C;
-    border-radius: 36px;
     height: 32px;
     width: 74px;
     justify-content: center;
@@ -98,13 +99,22 @@ p {
     margin: 4px;
   }
 
+  // .button_period_not_clicked > a {
+  //   text-decoration: none;
+  //   color: black;
+  //   font-size: 16px;
+  //   font-weight: 400;
+  //   padding: 8px 16px;
+  //   border-radius: 8px;
+  // }
+
   .button_period > a {
     text-decoration: none;
     color: white;
     font-size: 16px;
     font-weight: 400;
     padding: 8px 16px;
-    border-radius: 8px;
+    border-radius: 50px;
   }
 }
 
@@ -118,6 +128,7 @@ p {
 .carbon-intensity, .consumption-breakdown {
   background-color: #52796F;
   border-radius: 16px;
+  box-shadow: 0px 4px 10px #52796F;
   text-align: center;
   padding: 8px 12px;
   width: 75%;
@@ -142,6 +153,7 @@ p {
     text-decoration: none;
     padding: 2% 30%;
     display: inline-block;
+    margin: 16px 0px;
   }
 
   .div-text {
@@ -158,6 +170,7 @@ p {
 .consumption-breakdown {
   display: flex;
   flex-direction: column;
+  width: 75%;
   .time-title {
     align-self: center;
     margin-bottom: 0%;
@@ -171,6 +184,7 @@ p {
   height: 60px;
   background-color: #52796F;
   border-radius: 16px;
+  box-shadow: 0px 4px 10px #52796F;
   text-align: center;
   margin: 16px 0px;
   display: flex;
@@ -184,7 +198,7 @@ p {
 .consumption-imaged {
   gap: 16px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
   text-align: center;
   display: flex;
   padding-bottom: 24px;
@@ -220,7 +234,7 @@ p {
     flex-direction: column;
     background-color: #52796F;
     border-radius: 16px;
-    // text-align: center;
+    box-shadow: 0px 4px 10px #52796F;
     padding: 8px 12px;
     width: 30%;
   }
