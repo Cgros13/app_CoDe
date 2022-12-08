@@ -10,6 +10,11 @@ h1, h2, h4, h5{
   color: white;
 }
 
+h1{
+  color: #31572C;
+  font-family: 'Arial', sans-serif;
+  font-weight: 900;
+}
 h3 {
   font-size: 32px;
   margin-bottom: 16px;
@@ -19,13 +24,15 @@ h3 {
 
 h4{
   font-weight: 500;
-  font-size: 26px;
+  font-size: 1.75rem;
+  margin-bottom: 0;
 }
 
 h5 {
   color: #31572C;
-  margin: 24px 0px 4px 0px;
-  font-size: 16px;
+  font-size: 1.375rem;
+  text-align: center;
+  margin: 0px;
 }
 h6 {
   color: #31572C;
@@ -73,25 +80,31 @@ p {
   }
 }
 
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
 // Selector day, week, month
+#timebar p{
+  color: #31572C;
+}
+
 .timeperiod {
   background-color: #52796F;
-  border-radius: 36px;
+  border-radius: 12px;
   height: 46px;
   display: inline-flex;
   align-items: center;
-  position: absolute;
-    right: 10%;
-    top: 23%;
+  // position: absolute;
+    // right: 10%;
+    // top: 23%;
 
-  h5 {
-    text-align: center;
-    margin: 0px;
-  }
+
 
   .period {
-    height: 32px;
-    width: 74px;
+    height: 8px;
+    width: 100%;
     justify-content: center;
     display: flex;
     text-align: center;
@@ -114,7 +127,8 @@ p {
     font-size: 16px;
     font-weight: 400;
     padding: 8px 16px;
-    border-radius: 50px;
+    border-radius: 8px;
+    width: 100%;
   }
 }
 
