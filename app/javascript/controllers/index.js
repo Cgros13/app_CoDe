@@ -4,5 +4,8 @@
 
 import { application } from "./application"
 
+import AllGraphController from "./all_graph_controller"
+application.register("all-graph", AllGraphController)
+
 import GraphController from "./graph_controller"
 application.register("graph", GraphController)
