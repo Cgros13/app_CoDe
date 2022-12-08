@@ -8,6 +8,7 @@
 # créer un user
 Visit.destroy_all
 
+
 require 'open-uri'
 require 'net/http'
 require 'json'
@@ -26,9 +27,6 @@ sites_fetched = [
   {:url=>"https://www.rolex.com/fr", :statistics=>{"url"=>"https://www.rolex.com/fr", "green"=>true, "bytes"=>2024489, "cleanerThan"=>0.53, "statistics"=>{"adjustedBytes"=>1528489.195, "energy"=>0.0011530483588110658, "co2"=>{"grid"=>{"grams"=>0.509647374594491, "litres"=>0.28346586974945587}, "renewable"=>{"grams"=>0.4418481310964005, "litres"=>0.2457559305158179}}}, "timestamp"=>1670430173}},
   {:url=>"https://www.ikea.com/", :statistics=>{"url"=>"https://www.ikea.com/", "green"=>true, "bytes"=>1174733, "cleanerThan"=>0.72, "statistics"=>{"adjustedBytes"=>886923.415, "energy"=>0.0006690695566590876, "co2"=>{"grid"=>{"grams"=>0.2957287440433167, "litres"=>0.16448432743689273}, "renewable"=>{"grams"=>0.2563874541117624, "litres"=>0.1426027019769622}}}, "timestamp"=>1670496123}}
 ]
-
-user = User.create!(email: "allan@example.com", password: "azerty")
-user_1 = User.create!(email: "ines@example.com", password: "azerty")
 
 ## Pour créer des visites pour aujourd'hui et les 30 derniers jours
 31.times do |i|
