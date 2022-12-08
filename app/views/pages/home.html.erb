@@ -13,37 +13,35 @@
       <% end %>
     </div>
   </div>
-
-  <div class="welcome-message">
-    <% if user_signed_in? %>
-      <h3>Hey <strong><%= current_user.email.split('@').first.capitalize %></strong> !</h3>
-      <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2</h4>
-      <h4>But don't worry we'll break it down for you ...</h4>
-    <% end %>
-  </div>
-
-
-
-
-  <%# <h5>Here's your data for the: </h5> %>
-  <div class="timeperiod" data-controller="button">
-    <div class="period">
-      <div class="button_period">
-      <%= link_to 'Day', request.params.merge(period: 'day'), class: class_names("toggleBtn": params[:period] == "day"), data: { turbo: false } %>
+  <header>
+    <div class="welcome-message">
+      <% if user_signed_in? %>
+        <h3>Hey <strong><%= current_user.email.split('@').first.capitalize %></strong> !</h3>
+        <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2</h4>
+        <h4>But don't worry we'll break it down for you ...</h4>
+      <% end %>
+    </div>
+    <div id="timebar">
+      <p>Here's your data for the: </p>
+      <div class="timeperiod" data-controller="button">
+        <div class="period">
+          <div class="button_period">
+          <%= link_to 'Day', request.params.merge(period: 'day'), class: class_names("toggleBtn": params[:period] == "day"), data: { turbo: false } %>
+          </div>
+        </div>
+        <div class="period">
+          <div class="button_period">
+            <%= link_to 'Week', request.params.merge(period: 'week'), class: class_names("toggleBtn": params[:period] == "week"), data: { turbo: false }  %>
+          </div>
+        </div>
+        <div class="period">
+          <div class="button_period">
+            <%= link_to 'Month', request.params.merge(period: 'month'), class: class_names("toggleBtn": params[:period] == "month"), data: { turbo: false }  %>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="period">
-      <div class="button_period">
-        <%= link_to 'Week', request.params.merge(period: 'week'), class: class_names("toggleBtn": params[:period] == "week"), data: { turbo: false }  %>
-      </div>
-    </div>
-    <div class="period">
-      <div class="button_period">
-        <%= link_to 'Month', request.params.merge(period: 'month'), class: class_names("toggleBtn": params[:period] == "month"), data: { turbo: false }  %>
-      </div>
-    </div>
-  </div>
-
+  </header>
   <div class="peakhour">
     <div class="info">
       <div><h4><%= @visits.map(&:co2).compact.sum.round(2) %> g of Co2</h4> </div>
