@@ -10,11 +10,14 @@ class PagesController < ApplicationController
     when "month"
       @visits = @visits.where("created_at > ?", 1.month.ago)
     end
-  groups = @visits.group_by { |visit| visit.url.split(Regexp.union([".com", ".fr"])) }.map { |x| x }
-    @group_urls = groups.first(10).map(&:first).flatten.filter { |x| x != "/" }
+    groups = @visits.group_by { |visit| visit.url.split(Regexp.union([".com", ".fr"])) }.map { |x| x }
 
-    @group_co2s = groups.first(10).map(&:last).map do |t|
-      t.map(&:co2_by_time).sum.round(2) / 4
+    @data = groups.map(&:last).map do |t|
+      {
+        url: t.map { |truc| truc["url"] }.uniq,
+        co2: t.map(&:co2_by_time).sum.round(2) / 4
+      }
     end
+    @data = @data.first(7).sort_by { |x| x[:co2] }.reverse
   end
 end
