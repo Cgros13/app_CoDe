@@ -141,6 +141,33 @@ h5 {
   color: #52796F;
 }
 
+.button_period > a {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+  font-weight: 400;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+#chart {
+  max-width: 650px;
+  margin: 35px auto;
+}
+
+.consumption-imaged {
+  gap: 16px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  h4 {
+    color: #31572C;
+    font-size: 24px;
+  }
+}
+
+
 .funfacts {
   display: flex;
   justify-content: space-between;

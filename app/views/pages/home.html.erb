@@ -1,29 +1,36 @@
 <%= render "navbar" %>
-  <div class="hcontainer">
+  <div class="hcontainer" data-controller="graph">
     <div class="welcome-message">
       <% if user_signed_in? %>
-        <h3>Hey <strong><%= current_user.email %></strong> !</h3>
-        <h4>You've consumed <strong> 6.08g</strong> of CO2 today</h4>
+        <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
+        <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
         <h4>But don't worry we'll break it down for you ...</h4>
       <% end %>
-    </div>
 
+      <div data-graph-target="chart" data-green="<%= green_data(@visits) %>" ></div>
+    </div>
     <div class="timeperiod">
       <div class="period">
-        <h5>Day</h5>
+       <div class="button_period">
+        <%= link_to 'Day', request.params.merge(period: 'day'), data: { turbo: false } %>
+       </div>
       </div>
       <div class="period">
-        <h5>Week</h5>
+        <div class="button_period">
+         <%= link_to 'Week', request.params.merge(period: 'week'), data: { turbo: false } %>
+        </div>
       </div>
       <div class="period">
-        <h5>Month</h5>
+        <div class="button_period">
+          <%= link_to 'Month', request.params.merge(period: 'month'), data: { turbo: false } %>
+        </div>
       </div>
     </div>
 
     <div class="consumption-info">
       <div class="carbon-intensity">
         <h4> Energy Intensity </h4>
-        <p>Your current browsing usage generate the equivalent of 6.08g of carbon dioxide.</p>
+        <p>Today your browsing consumed <%= @visits.map(&:energy).compact.sum.round(2) %> KW g.</p>
         <br>
         <p>Want to learn more about websites carbon footprint? </p>
         <a href="https://www.websitecarbon.com/how-does-it-work/" target="_blanck" class="learn-btn"><strong>Learn More</strong></a>
@@ -39,7 +46,7 @@
         </div>
       </div>
     </div>
-
+    
     <div class="peakhour">
     <h4>Your carbon consumption peaked between <strong>9:00 a.m</strong> and <strong>12:00 p.m</strong></h4>
     </div>
