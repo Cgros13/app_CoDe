@@ -1,20 +1,20 @@
 <%= render "navbar" %>
-  <div class="hcontainer" data-controller="graph">
+  <div class="hcontainer"
+       data-controller="graph all-graph"
+       data-all-graph-urls-value="<%= @group_urls  %>"
+       data-all-graph-co2s-value="<%= @group_co2s %>">
     <div class="welcome-message">
       <% if user_signed_in? %>
         <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
         <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
         <h4>But don't worry we'll break it down for you ...</h4>
       <% end %>
-      <% visits = @visits.where('url LIKE ?', 'https://www.youtube%').where.not(statistics: nil) %>
 
-      <% visits.each do |visit| %>
-        <%= visit.statistics.first[1]["grid"]["grams"] %>
-        <br>
-      <% end %>
-      <%= console %>
+
+
 
       <div data-graph-target="chart" data-green="<%= green_data(@visits) %>" ></div>
+      <div data-all-graph-target="container" ></div>
     </div>
     <div class="timeperiod">
       <div class="period">
@@ -108,3 +108,4 @@
   </div>
 </div>
 <%= render "footer" %>
+<%= console %>

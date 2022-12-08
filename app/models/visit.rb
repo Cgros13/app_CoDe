@@ -16,7 +16,7 @@ class Visit < ApplicationRecord
   end
 
   def time
-    end_time - created_at if end_time
+    ((end_time - created_at) / 60).round(2) if end_time
   end
 
   def co2_per_time
