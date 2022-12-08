@@ -39,6 +39,6 @@ class Visit < ApplicationRecord
   end
 
   def laundry
-    energy * 2
+    energy * 30
   end
 end
