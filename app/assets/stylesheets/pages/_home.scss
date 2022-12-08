@@ -120,6 +120,7 @@ p {
   border-radius: 16px;
   text-align: center;
   padding: 8px 12px;
+  width: 75%;
   h4 {
     text-align: left;
   }
@@ -131,6 +132,7 @@ p {
   display: flex;
   flex-direction: column;
   p {
+    text-align: center;
     margin-bottom: 10px;
   }
   .learn-btn {
@@ -140,6 +142,10 @@ p {
     text-decoration: none;
     padding: 2% 30%;
     display: inline-block;
+  }
+
+  .div-text {
+    text-align-last: center;
   }
 
   // Pie chart -> proportion green energy
@@ -153,6 +159,7 @@ p {
   display: flex;
   flex-direction: column;
   .time-title {
+    align-self: center;
     margin-bottom: 0%;
   }
   // Will include graph 2 here
@@ -232,4 +239,24 @@ p {
     margin-top: 16px;
   }
 
+}
+
+.conso-review {
+  text-align: center;
+}
+
+.apexcharts-bar-area{
+  fill: #EDEDE9;
+}
+
+tspan {
+  fill: #EDEDE9;
+}
+
+.apexcharts-menu-icon{
+  display: none;
+}
+
+.apexcharts-grid-borders line, .apexcharts-grid line{
+    stroke: #52796F;
 }

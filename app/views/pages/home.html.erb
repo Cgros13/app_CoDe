@@ -9,7 +9,7 @@
         <%= image_tag "logo.png"%>
     </div>
     <div class="code">
-        <h2>Co_De</h2>
+        <h2>c0_de</h2>
       <% end %>
     </div>
   </div>
@@ -17,7 +17,7 @@
   <div class="welcome-message">
     <% if user_signed_in? %>
       <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
-      <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
+      <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2</h4>
       <h4>But don't worry we'll break it down for you ...</h4>
     <% end %>
   </div>
@@ -48,33 +48,35 @@
     <div class="carbon-intensity">
       <div class="div-text">
         <h4> <strong>Energy Intensity</strong></h4>
-        <%# <p>Today your browsing consumed <%= @visits.map(&:energy).compact.sum.round(2) KW g.</p> %>
-        <p>x% of the websites you navigated to today, use renewable energies to host their servers.</p>
+        <p>This is the percentage of the websites you navigated, use renewable energies to host their servers.</p>
       </div>
       <div id="pie-chart">
         <div data-graph-target="chart" data-green="<%= green_data(@visits) %>" ></div>
       </div>
       <div class="div-button">
-        <p>Want to learn more about websites carbon footprint? </p>
+        <p> Want to learn more about websites carbon footprint? </p>
         <a href="https://www.websitecarbon.com/how-does-it-work/" target="_blanck" class="learn-btn"><strong>Learn More</strong></a>
       </div>
     </div>
 
     <div class="consumption-breakdown">
       <div class="time-title">
-        <h4><strong>Today - <%= Time.now.strftime("%A %d of %B, %Y") %></strong></h4>
+        <h4>These are your greediest website</strong></h4>
+        <%# <h4><strong>Today - <%= Time.now.strftime("%A %d of %B, %Y") ></strong></h4> %>
+
       </div>
       <div class="linechart">
-        <div data-all-graph-target="container" ></div>
+        <div data-all-graph-target="container"></div>
       </div>
     </div>
   </div>
 
-  <h6>Key values:</h6>
+  <h3 class="conso-review"> Consomation review </h3>
+
   <div class="peakhour">
-    <div><h4> Daily Co2</h4></div>
-    <div><h4>KWh</h4></div>
-    <div><h4>Bytes</h4></div>
+    <div><h4><%= @visits.map(&:co2).compact.sum.round(2) %> g of Co2</h4></div>
+    <div><h4><%= @visits.map(&:energy).compact.sum.round(2) %> KWh</h4></div>
+    <div><h4><%= bytes_data(@visits) %> Bytes</h4></div>
   </div>
 
   <div class="consumption-imaged">
@@ -130,4 +132,3 @@
   </div>
 </div>
 <%= render "footer" %>
-<%= console %>

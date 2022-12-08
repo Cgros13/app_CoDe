@@ -30,13 +30,13 @@ export default class extends Controller {
       }
       },
       series: [this.chartTarget.dataset.green],
-      colors: ["#F08080"],
+      colors: ["#008000"],
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
             size: "70%",
-            background: "#97A97C"
+            background: "#CFE1B9"
           },
           track: {
             dropShadow: {
@@ -65,8 +65,8 @@ export default class extends Controller {
         type: "gradient",
         gradient: {
           shade: "dark",
-          type: "vertical",
-          gradientToColors: ["#d0f4de"],
+          type: "radial",
+          gradientToColors: ["#F08080"],
           stops: [0, 100]
         }
       },
