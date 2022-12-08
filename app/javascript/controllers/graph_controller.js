@@ -15,15 +15,28 @@ export default class extends Controller {
       chart: {
         height: 280,
         type: "radialBar",
+        animations: {
+          enabled: true,
+          easing: 'easeinout',
+          speed: 800,
+          animateGradually: {
+              enabled: true,
+              delay: 150
+          },
+          dynamicAnimation: {
+              enabled: true,
+              speed: 350
+          }
+      }
       },
       series: [this.chartTarget.dataset.green],
-      colors: ["#20E647"],
+      colors: ["#F08080"],
       plotOptions: {
         radialBar: {
           hollow: {
             margin: 0,
             size: "70%",
-            background: "#293450"
+            background: "#97A97C"
           },
           track: {
             dropShadow: {
@@ -37,7 +50,7 @@ export default class extends Controller {
           dataLabels: {
             name: {
               offsetY: -10,
-              color: "#fff",
+              color: "white",
               fontSize: "13px"
             },
             value: {
@@ -53,14 +66,14 @@ export default class extends Controller {
         gradient: {
           shade: "dark",
           type: "vertical",
-          gradientToColors: ["#87D4F9"],
+          gradientToColors: ["#d0f4de"],
           stops: [0, 100]
         }
       },
       stroke: {
         lineCap: "round"
       },
-      labels: ["Green Servers"]
+      labels: ["Renewable energy"]
     };
   }
 }

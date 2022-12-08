@@ -1,4 +1,4 @@
-// Specific CSS for your home-page
+// General body
 html {
   scroll-behavior: smooth;
   background-color: #EDEDE9;
@@ -18,24 +18,24 @@ h3 {
 }
 
 h4{
-  font-weight: 400;
-  font-size: 20px;
-}
-
-p {
-  color: white;
+  font-weight: 500;
+  font-size: 26px;
 }
 
 h5 {
+  color: #31572C;
+  margin: 24px 0px 4px 0px;
   font-size: 16px;
 }
-
+h6 {
+  color: #31572C;
+  font-size: 26px;
 }
-
-.welcome-message {
-  h4 {
-    color: #31572C;
-  }
+p {
+  color: white;
+  text-align: left;
+  margin-bottom: 0;
+}
 }
 
 .hcontainer {
@@ -43,13 +43,43 @@ h5 {
   margin: 0;
 }
 
+// Header
+.logo-text-navbar {
+  display: flex;
+  margin: 16px 0px 24px 0px;
+  gap: 8px;
+  align-items: center;
+
+  h2 {
+    color: #31572C;
+    font-size: 32px;
+    margin: 0;
+    font-weight: 600;
+    }
+}
+
+.navbar-brand img {
+  width: 56px;
+}
+
+
+// Welcome message
+.welcome-message {
+  h3 {
+    font-size: 36px;;
+  }
+  h4 {
+    color: #31572C;
+  }
+}
+
+// Selector day, week, month
 .timeperiod {
   background-color: #CFE1B9;
   border-radius: 36px;
   height: 46px;
   display: inline-flex;
   align-items: center;
-  margin-top: 16px;
 
   h5 {
     text-align: center;
@@ -67,18 +97,27 @@ h5 {
     align-items: center;
     margin: 4px;
   }
+
+  .button_period > a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 8px 16px;
+    border-radius: 8px;
+  }
 }
 
+// Div 1 & 2 Consumption info
 .consumption-info {
-  padding: 36px 0px;
+  padding: 24px 0px;
   display: flex;
   gap: 16px;
 }
 
-.carbon-intensity, .timeperiod-consumption {
+.carbon-intensity, .consumption-breakdown {
   background-color: #52796F;
   border-radius: 16px;
-  height: 400px;
   text-align: center;
   padding: 8px 12px;
   h4 {
@@ -86,51 +125,62 @@ h5 {
   }
 }
 
+// Div 1 Carbon Intensity
 .carbon-intensity {
   width: 30%;
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-bottom: 10px;
+  }
   .learn-btn {
     border-radius: 8px;
     background-color: #E9F5DB;
     color: #31572C;
     text-decoration: none;
     padding: 2% 30%;
+    display: inline-block;
   }
+
+  // Pie chart -> proportion green energy
+  #pie-chart {
+    max-width: 650px;
+}
 }
 
-.timeperiod-consumption {
-  width: 75%;
-}
-
+// Div 2 Consumption Breakdown
 .consumption-breakdown {
   display: inline-flex;
   border-bottom: 1px white solid;
-
   .time-title {
     margin-bottom: 0%;
   }
-  .column-category {
-    justify-content: space-between;
-    display: inline-flex;
-  }
-
+  // Will include graph 2 here
 }
+
+// Div 3 Peakhour
 .peakhour {
   width: 100%;
   height: 60px;
   background-color: #52796F;
   border-radius: 16px;
   text-align: center;
-  margin: 16px 0px 16px 0px;
+  margin: 16px 0px;
+  display: flex;
+  justify-content: space-around;
   h4 {
     color: white;
   }
 }
+
+// Div 4 representation carbon footprint
 .consumption-imaged {
   gap: 16px;
   align-items: center;
   justify-content: center;
   text-align: center;
   display: flex;
+  padding-bottom: 24px;
   h4 {
     color: #31572C;
     font-size: 24px;
@@ -141,50 +191,11 @@ h5 {
   color: #52796F;
 }
 
-.button_period > a {
-  text-decoration: none;
-  color: white;
-  font-size: 16px;
-  font-weight: 400;
-  padding: 8px 16px;
-  border-radius: 8px;
-}
-
-#chart {
-  max-width: 650px;
-  margin: 35px auto;
-}
-
-.consumption-imaged {
-  gap: 16px;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  display: flex;
-  h4 {
-    color: #31572C;
-    font-size: 24px;
-  }
-}
-
-
+// Div 5 Funfacts
 .funfacts {
   display: flex;
   justify-content: space-between;
-  #f1, #f2, #f3 {
-    background-color: #52796F;
-    border-radius: 16px;
-    height: 400px;
-    text-align: center;
-    padding: 8px 12px;
-    width: 30%;
-  }
-
-  iframe {
-    position: relative;
-    left: -10px;
-    pointer-events: none;
-  }
+  padding: 16px 0px;
 
   h4, p {
     margin-top: 0px;
@@ -196,4 +207,44 @@ h5 {
     color: white;
     text-align: left;
   }
+
+  #f1, #f2, #f3 {
+    display: flex;
+    flex-direction: column;
+    background-color: #52796F;
+    border-radius: 16px;
+    // text-align: center;
+    padding: 8px 12px;
+    width: 30%;
+  }
+
+  iframe {
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+  }
+
+  .funfacts {
+    height: 70%;
+  }
+
+  .funfact-text {
+    margin-top: 16px;
+  }
+
+  // #f1 > iframe {
+  //   height: 200px;
+  //   position: relative;
+  //   top: -9%;
+  // }
+
+  // #f2 > iframe {
+  //   height: 120px;
+  // }
+
+  // #f3 > iframe {
+  //   top: -5%;
+  //   height: 200px;
+  //   position: relative;
+  // }
 }
