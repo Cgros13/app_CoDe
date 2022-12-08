@@ -12,10 +12,10 @@ class PagesController < ApplicationController
     end
     groups = @visits.group_by { |visit| visit.url.split(Regexp.union([".com", ".fr"])) }.map { |x| x }
 
-    @data = groups.map(&:last).map do |t|
+    @data = groups.map(&:last).map do |visits|
       {
-        url: t.map { |visit| visit["url"] }.uniq,
-        co2: t.where.not(co2_by_time: nil).map(&:co2_by_time).sum.round(2) / 4
+        url: visits.filter { |visit| !visit.co2.nil? }.map { |visit| visit["url"] }.uniq,
+        co2: visits.map(&:co2_by_time).sum.round(2) / 4
       }
     end
     @data = @data.first(7).sort_by { |x| x[:co2] }.reverse
