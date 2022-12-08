@@ -150,8 +150,8 @@ p {
 
 // Div 2 Consumption Breakdown
 .consumption-breakdown {
-  display: inline-flex;
-  border-bottom: 1px white solid;
+  display: flex;
+  flex-direction: column;
   .time-title {
     margin-bottom: 0%;
   }
@@ -232,19 +232,4 @@ p {
     margin-top: 16px;
   }
 
-  // #f1 > iframe {
-  //   height: 200px;
-  //   position: relative;
-  //   top: -9%;
-  // }
-
-  // #f2 > iframe {
-  //   height: 120px;
-  // }
-
-  // #f3 > iframe {
-  //   top: -5%;
-  //   height: 200px;
-  //   position: relative;
-  // }
 }

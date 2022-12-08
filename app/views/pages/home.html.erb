@@ -1,30 +1,30 @@
-  <div class="hcontainer"
-       data-controller="graph all-graph"
-       data-all-graph-urls-value="<%= @data.map { |x| x[:url] } %>"
-       data-all-graph-co2s-value="<%= @data.map { |x| x[:co2] } %>">
-    
-    <div class="logo-text-navbar">
-      <div class="logo">
-        <%= link_to "#", class: "navbar-brand" do %>
-          <%= image_tag "logo.png"%>
-      </div>
-      <div class="code">
-          <h2>Co_De</h2>
-        <% end %>
-      </div>
+<div class="hcontainer"
+      data-controller="graph all-graph"
+      data-all-graph-urls-value="<%= @data.map { |x| x[:url] } %>"
+      data-all-graph-co2s-value="<%= @data.map { |x| x[:co2] } %>">
+
+  <div class="logo-text-navbar">
+    <div class="logo">
+      <%= link_to "#", class: "navbar-brand" do %>
+        <%= image_tag "logo.png"%>
     </div>
-    
-    <div class="welcome-message">
-      <% if user_signed_in? %>
-        <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
-        <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
-        <h4>But don't worry we'll break it down for you ...</h4>
+    <div class="code">
+        <h2>Co_De</h2>
       <% end %>
+    </div>
+  </div>
 
-      <div data-graph-target="chart" data-green="<%= green_data(@visits) %>" ></div>
-      <div data-all-graph-target="container" ></div>
+  <div class="welcome-message">
+    <% if user_signed_in? %>
+      <h3>Hey <strong><%= current_user.email.split('@').first %></strong> !</h3>
+      <h4>You've consumed <strong> <%= @visits.map(&:co2).compact.sum.round(2) %></strong> g of CO2 today</h4>
+      <h4>But don't worry we'll break it down for you ...</h4>
+    <% end %>
+  </div>
 
-   
+
+
+
   <h5>Here's your data for the: </h5>
   <div class="timeperiod">
     <div class="period">
@@ -64,8 +64,10 @@
       <div class="time-title">
         <h4><strong>Today - <%= Time.now.strftime("%A %d of %B, %Y") %></strong></h4>
       </div>
+      <div class="linechart">
+        <div data-all-graph-target="container" ></div>
+      </div>
     </div>
-
   </div>
 
   <h6>Key values:</h6>
