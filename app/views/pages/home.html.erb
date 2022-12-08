@@ -26,20 +26,20 @@
 
 
   <h5>Here's your data for the: </h5>
-  <div class="timeperiod">
+  <div class="timeperiod" data-controller="button">
     <div class="period">
       <div class="button_period">
-      <%= link_to 'Day', request.params.merge(period: 'day'), data: { turbo: false } %>
+      <%= link_to 'Day', request.params.merge(period: 'day'), class: class_names("toggleBtn": params[:period] == "day"), data: { turbo: false } %>
       </div>
     </div>
     <div class="period">
       <div class="button_period">
-        <%= link_to 'Week', request.params.merge(period: 'week'), data: { turbo: false } %>
+        <%= link_to 'Week', request.params.merge(period: 'week'), class: class_names("toggleBtn": params[:period] == "week"), data: { turbo: false }  %>
       </div>
     </div>
     <div class="period">
       <div class="button_period">
-        <%= link_to 'Month', request.params.merge(period: 'month'), data: { turbo: false } %>
+        <%= link_to 'Month', request.params.merge(period: 'month'), class: class_names("toggleBtn": params[:period] == "month"), data: { turbo: false }  %>
       </div>
     </div>
   </div>
@@ -131,4 +131,3 @@
   </div>
 </div>
 <%= render "footer" %>
-<%= console %>
