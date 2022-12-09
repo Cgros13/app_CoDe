@@ -8,17 +8,16 @@ class Visit < ApplicationRecord
   end
 
   def co2
-    statistics.present? ? (statistics["co2"]["grid"]["grams"] + statistics["co2"]["renewable"]["grams"]) / 2 : 2
+    statistics.present? ? (statistics["co2"]["grid"]["grams"] + statistics["co2"]["renewable"]["grams"]) / 2 : rand(0.5..2)
   end
 
   def co2_by_time
-    if co2.present? && time.present?
-      co2 * time
-    end
+    co2 * time if co2.present? && time.present?
   end
 
   def time
-    end_time.present? ? ((end_time - created_at) / 60).round(2) : rand(1..3) * rand(1..60)
+    update(end_time: Time.now) unless end_time.present?
+    ((end_time - created_at) / 60).round(2)
   end
 
   def energy_per_time
