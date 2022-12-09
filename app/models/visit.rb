@@ -12,18 +12,13 @@ class Visit < ApplicationRecord
   end
 
   def co2_by_time
-    co2 * time if time
+    if co2.present? && time.present?
+      co2 * time
+    end
   end
 
   def time
     ((end_time - created_at) / 60).round(2) if end_time
-  end
-
-  def co2_per_time
-    return unless time
-
-    ret = co2 / time
-    ret.round(2)
   end
 
   def energy_per_time
