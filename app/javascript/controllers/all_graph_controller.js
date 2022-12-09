@@ -10,6 +10,8 @@ export default class extends Controller {
   }
 
   connect() {
+    if (this.urlsValue.length == 0 || this.co2sValue.length == 0) return
+
     this.getCo2sOptions();
     this.chart = new ApexCharts(this.containerTarget, this.options);
     this.chart.render();

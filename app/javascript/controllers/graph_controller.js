@@ -4,7 +4,10 @@ import ApexCharts from 'apexcharts'
 // Connects to data-controller="graph"
 export default class extends Controller {
   static targets = ["chart"]
+
   connect() {
+    if (isNaN(this.chartTarget.dataset.green)) return;
+
     this.getOptions();
     this.chart = new ApexCharts(this.chartTarget, this.options);
     this.chart.render();
