@@ -18,7 +18,7 @@ class Visit < ApplicationRecord
   end
 
   def time
-    end_time.present? ? ((end_time - created_at) / 60).round(2) : 4 * 60
+    end_time.present? ? ((end_time - created_at) / 60).round(2) : rand(1..3) * rand(1..60)
   end
 
   def energy_per_time
