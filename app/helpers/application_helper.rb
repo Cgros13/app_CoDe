@@ -6,6 +6,6 @@ module ApplicationHelper
   end
 
   def bytes_data(visits)
-    visits.map(&:bytes).sum.round(2)
+    visits.where.not(bytes: nil).map(&:bytes).sum.round(2)
   end
 end

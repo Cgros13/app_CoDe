@@ -8,7 +8,7 @@ class Visit < ApplicationRecord
   end
 
   def co2
-    (statistics["co2"]["grid"]["grams"] + statistics["co2"]["renewable"]["grams"]) / 2 if statistics
+    statistics.present? ? (statistics["co2"]["grid"]["grams"] + statistics["co2"]["renewable"]["grams"]) / 2 : 2
   end
 
   def co2_by_time
@@ -18,7 +18,7 @@ class Visit < ApplicationRecord
   end
 
   def time
-    ((end_time - created_at) / 60).round(2) if end_time
+    end_time.present? ? ((end_time - created_at) / 60).round(2) : 4 * 60
   end
 
   def energy_per_time
@@ -26,14 +26,14 @@ class Visit < ApplicationRecord
   end
 
   def phone_cycles
-    energy * 50
+    energy.present? ? energy * 50 : 1
   end
 
   def e_bike
-    energy * 100
+    energy.present? ? energy * 100 : 1
   end
 
   def laundry
-    energy * 30
+    energy.present? ? energy * 30 : 1
   end
 end
