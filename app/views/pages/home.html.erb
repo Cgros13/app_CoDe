@@ -23,7 +23,7 @@
     </div>
     <div id="timebar">
       <p>Here's your data for the: </p>
-      <div class="timeperiod" data-controller="button">
+      <div class="timeperiod">
         <div class="period">
           <div class="button_period">
           <%= link_to 'Day', request.params.merge(period: 'day'), class: class_names("toggleBtn": params[:period] == "day"), data: { turbo: false } %>

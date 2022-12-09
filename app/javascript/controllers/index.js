@@ -9,6 +9,3 @@ application.register("all-graph", AllGraphController)
 
 import GraphController from "./graph_controller"
 application.register("graph", GraphController)
-
-import ButtonController from "./button_controller"
-application.register("button", ButtonController)
