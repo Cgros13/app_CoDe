@@ -1,8 +1,9 @@
 class Api::V1::VisitsController < Api::V1::BaseController
   def create
-    @visit = Visit.new(visit_params)
+    @visit = Visit.new
     ap current_user
     ap visit_params
+    @visit.url = visit_params[:url].split(/(.*\.\w*).*/).last
     response = FetcherApiCarbonService.new(@visit.url).call
     @visit.cleaner_than = response["cleanerThan"] if response["cleanerThan"]
     @visit.green = response["green"] if response["green"]
@@ -21,9 +22,7 @@ class Api::V1::VisitsController < Api::V1::BaseController
 
   def update
     @visit = Visit.find(params[:id])
-    # @visit.end_time = response["end_time"] if response["end_time"]
-    @visit.update(visit_params)
-    return unless params[:visit][:end_time]
+    return unless visit_params[:end_time]
 
     @visit.update(end_time: Time.at(params[:visit][:end_time] / 1000))
     ap @visit
